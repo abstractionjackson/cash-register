@@ -2,6 +2,9 @@
 export class Payment {
 	//USD values in cents
 	denominations = [10000, 5000, 2000, 1000, 500, 100, 25, 10, 5, 1];
+	getGreatestDenomination() {
+		return this.denominations[0];
+	}
 	//A storage object that tallies the denominations
 	count = {};
 	//Increment the count of a given denomination, at least once
