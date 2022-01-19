@@ -1,6 +1,6 @@
 <script>
+	import Message from '$lib/components/Message.svelte';
 	export let payment;
-	console.log(payment.amount);
 </script>
 
 <table>
@@ -10,6 +10,17 @@
 				Change Due: ${(payment.amount / 100).toFixed(2)}
 			</th>
 		</tr>
+		{#if payment.getGreatestDenomination() < payment.amount}
+			<tr>
+				<th colspan="2" id="message">
+					<Message
+						text={`The register carries no denomination above $${
+							payment.getGreatestDenomination() / 100
+						}.`}
+					/>
+				</th>
+			</tr>
+		{/if}
 	</thead>
 	<tbody>
 		<tr>
@@ -42,5 +53,8 @@
 	}
 	th {
 		padding: 0.25rem;
+	}
+	th#message {
+		background-color: white;
 	}
 </style>
