@@ -11,15 +11,19 @@
 	<ChangeTable payment={new Payment(totalChange)} />
 	<div class="container">
 		<form>
-			<label for="totalCost">Total Cost</label>
-			<input type="number" name="totalCost" bind:value={totalCost} placeholder="Total Cost" />
-			<label for="amtProvided">Amount Provided</label>
-			<input
-				type="number"
-				name="amtProvided"
-				bind:value={amtProvided}
-				placeholder="Amount Provided"
-			/>
+			<div class="container container-input">
+				<span class="currency-symbol">$</span>
+				<input type="number" name="totalCost" bind:value={totalCost} placeholder="Total Cost" />
+			</div>
+			<div class="container container-input">
+				<span class="currency-symbol">$</span>
+				<input
+					type="number"
+					name="amtProvided"
+					bind:value={amtProvided}
+					placeholder="Amount Provided"
+				/>
+			</div>
 			<button
 				style={`display: ${totalCost || amtProvided ? 'block' : 'none'}`}
 				id="reset"
@@ -69,6 +73,7 @@
 	form {
 		display: grid;
 		padding-top: 2rem;
+		margin: auto;
 	}
 
 	input {
@@ -78,12 +83,24 @@
 		width: 100%;
 		margin: 0.75rem auto;
 		max-width: 18rem;
+		border: 0;
+		outline: 0;
+		border-bottom: 1px solid #000000;
+	}
+
+	span.currency-symbol {
+		/* margin-right: 1em; */
 	}
 
 	button#reset {
 		margin: auto;
 		padding: 0.25rem;
 		background-color: #ffffff;
+	}
+
+	.container {
+		display: flex;
+		align-items: center;
 	}
 
 	@media (min-width: 480px) {
